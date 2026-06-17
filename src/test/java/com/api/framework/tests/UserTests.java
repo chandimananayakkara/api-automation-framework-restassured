@@ -9,10 +9,11 @@ import org.testng.annotations.Test;
 public class UserTests extends BaseTest {
 
    private int userId;
+   private String email;
 
    @Test(priority = 1, description = "Create a new user")
     public void testCreateUser(){
-       String email = "apiuser" + System.currentTimeMillis()+"@mail.com";
+       email = "apiuser" + System.currentTimeMillis()+"@mail.com";
        User newUser = new User("QA Student", email, "male","active");
 
        Response response = requestSpec.body(newUser).when().post("/users");
@@ -25,7 +26,7 @@ public class UserTests extends BaseTest {
 
    @Test(priority = 2, dependsOnMethods = "testCreateUser", description = "View details of created user")
     public void testGetUser(){
-       Response response = requestSpec.when().get("/users" + userId);
+       Response response = requestSpec.when().get("/users/" + userId);
 
        Assert.assertEquals(response.getStatusCode(),200);
        Assert.assertEquals(response.jsonPath().getString("name"),"QA Student");
@@ -33,9 +34,9 @@ public class UserTests extends BaseTest {
 
    @Test(priority = 3, dependsOnMethods = "testGetUser", description = "Change name of user")
     public void testUpdateUser(){
-       User updatedUser = new User("Updated QA Student",null,"male","active");
+       User updatedUser = new User("Updated QA Student",email,"male","active");
 
-       Response response = requestSpec.body(updatedUser).when().patch("/users/"+userId);
+       Response response = requestSpec.body(updatedUser).when().put("/users/"+userId);
 
        Assert.assertEquals(response.getStatusCode(),200);
        Assert.assertEquals(response.jsonPath().getString("name"),"Updated QA Student");
