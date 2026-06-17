@@ -5,6 +5,7 @@ import com.api.framework.models.User;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class UserTests extends BaseTest {
 
@@ -52,5 +53,13 @@ public class UserTests extends BaseTest {
    @Test(priority = 5, dependsOnMethods = "testDeleteUser", description = "Verify the user is successfully deleted")
     public void testVerifyDeletion(){
        Response response = requestSpec.when().get("/users/"+userId);
+   }
+
+   @Test(priority = 6, dependsOnMethods = "testCreateUser", description = "check jason data validation")
+    public void testUserSchema(){
+       requestSpec.when().get("/users/"+userId).then().assertThat().statusCode(200).body(matchesJsonSchemaInClasspath("schemas/user-schema.json"));
+
+       System.out.println("JSON schema validation passed!");
+
    }
 }
