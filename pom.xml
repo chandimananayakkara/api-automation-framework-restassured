@@ -39,10 +39,10 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <!-- Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
+            <artifactId>allure-rest-assured</artifactId>
             <version>2.35.2</version>
             <scope>compile</scope>
         </dependency>
