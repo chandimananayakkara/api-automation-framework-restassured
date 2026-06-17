@@ -1,0 +1,32 @@
+<div>POST to https://gorest.co.in/public/v2/users</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;email&quot;: &quot;sharda_vm_mishra@osinski-padberg.test&quot;,
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;name&quot;: &quot;Duplicate User&quot;,
+    &quot;status&quot;: &quot;active&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer f56be82348cbc95d1ef70d35c1c92070b65a12b1c5eb7993c7c28f8777aba43c</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://gorest.co.in/public/v2/users&#39; -H &#39;Authorization: Bearer f56be82348cbc95d1ef70d35c1c92070b65a12b1c5eb7993c7c28f8777aba43c&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;email&quot;: &quot;sharda_vm_mishra@osinski-padberg.test&quot;,
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;name&quot;: &quot;Duplicate User&quot;,
+    &quot;status&quot;: &quot;active&quot;
+}&#39;
+    </div>
+
